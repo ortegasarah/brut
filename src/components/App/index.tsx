@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     getToken();
-  });
+  }, []);
 
   const getToken = async () => {
     const clientId = import.meta.env.VITE_CLIENT_ID;
@@ -24,11 +24,15 @@ function App() {
   if (!token) {
     return (
       <>
-        <Login/>
+        <Login />
       </>
     );
   } else {
-    <Trackinfo/>;
+    return (
+      <>
+        <Trackinfo />
+      </>
+    );
   }
 }
 
