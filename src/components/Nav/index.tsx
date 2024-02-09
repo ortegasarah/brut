@@ -1,22 +1,26 @@
 import { redirectToAuthCodeFlow } from "../../auth";
+import { Button, H1, Navbar, Profile } from "./styles";
 
-const Nav = ({profile}) => {
-
+interface IProps {
+  profile?: string | null;
+}
+const Nav: React.FC<IProps> = ({ profile }) => {
   const cliendId = import.meta.env.VITE_CLIENT_ID;
 
   const handleClick = async () => {
     await redirectToAuthCodeFlow(cliendId);
-  }
+  };
 
-  
   return (
     <>
-      <h1>Brut</h1>
-      {!profile ? (
-        <button onClick={handleClick}>Login</button>
-      ) : (
-        <img src={profile}></img>
-      )}
+      <Navbar>
+        <H1>Brut</H1>
+        {!profile ? (
+          <Button onClick={handleClick}>Login</Button>
+        ) : (
+          <Profile profile={profile} />
+        )}
+      </Navbar>
     </>
   );
 };

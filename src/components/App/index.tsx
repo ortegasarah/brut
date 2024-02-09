@@ -4,10 +4,14 @@ import Login from "../Login";
 import Nav from "../Nav";
 import Trackinfo from "../Trackinfo";
 import { getAccessToken } from "../../auth";
+import { GlobalStyle } from "../../styles";
+import { Container, Side, TrackViewer } from "./style";
 
 function App() {
+  const GlobalStyleProxy: any = GlobalStyle;
   const [token, setToken] = useState<string | null>(null);
   const [profile, setProfile] = useState<string | null>(null);
+  const [playlists, setPlaylists] = useState([])
 
   const clientId = import.meta.env.VITE_CLIENT_ID;
   const params = new URLSearchParams(window.location.search);
@@ -19,6 +23,7 @@ function App() {
     }
     if (token) {
       getUserInfo();
+      getPlaylist()
     }
   }, [token]);
 
@@ -31,7 +36,7 @@ function App() {
 
   const getUserInfo = async () => {
     const { data } = await axios.get("https://api.spotify.com/v1/me", {
-      headers : {
+      headers: {
         Authorization: `Bearer ${token}`,
         "content-type": "application/json",
       },
@@ -39,17 +44,40 @@ function App() {
     setProfile(data.images[0].url);
   };
 
+
+  const getPlaylist = async () => {
+    const { data } = await axios.get("https://api.spotify.com/v1/users/me/playlists", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "content-type": "application/json",
+      },
+    });
+    const playlists = data.map(({name, id}: {name: String, id:number}) => {
+      return {name, id}
+    })
+    setPlaylists(playlists)
+  };
+
+
+
   if (!token) {
     return (
       <>
+      <GlobalStyleProxy/>
         <Login />
       </>
     );
   } else {
     return (
       <>
-        <Nav profile = {profile} /> 
+      <Container>
+        <Nav profile={profile} />
+        
+        <TrackViewer>
         <Trackinfo />
+        </TrackViewer>
+        <Side />
+        </Container>
       </>
     );
   }

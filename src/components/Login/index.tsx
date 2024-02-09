@@ -4,7 +4,7 @@ const Login = () => {
   return (
     <>
       <Nav></Nav>
-      <p>music player</p>;
+      <p>music player</p>
     </>
   );
 };
