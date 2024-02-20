@@ -7,12 +7,15 @@ import { getAccessToken } from "../../auth";
 import { GlobalStyle } from "../../styles";
 import { Container, Side, TrackViewer } from "./style";
 import Sidebar from "../Sidebar";
+import { ITrack } from "../../types";
 
 function App() {
   const GlobalStyleProxy: any = GlobalStyle;
   const [token, setToken] = useState<string | null>(null);
   const [profile, setProfile] = useState<string | null>(null);
   const [playlists, setPlaylists] = useState([]);
+  const [tracks, setTracks] = useState<Array<string> | null>(null);
+  const [track, setTrack] = useState<ITrack | null> (null);
 
   const clientId = import.meta.env.VITE_CLIENT_ID;
   const params = new URLSearchParams(window.location.search);
@@ -73,7 +76,9 @@ function App() {
         },
       }
     );
-    getTracks(data);
+    const uris = Object.entries(data.items).map(([key, val]) => val.track.uri);
+    console.log("our uris", uris);
+    setTracks(uris);
   };
 
   if (!token) {
@@ -90,10 +95,17 @@ function App() {
           <Nav profile={profile} />
 
           <TrackViewer>
-            <Trackinfo />
+            <Trackinfo  track={track} />
           </TrackViewer>
           <Side>
-            <Sidebar playlists={playlists} getTracks={getTracks} />
+            <Sidebar
+              track={track}
+              token={token}
+              tracks={tracks}
+              playlists={playlists}
+              getTracks={getTracks}
+              setTrack={setTrack}
+            />
           </Side>
         </Container>
       </>
