@@ -19,7 +19,7 @@ export const TrackViewer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   background: white;
-  min-width: 70vw;
+  /* min-width: 70vw; */
 
   @media (max-width: 800px){
     font-size: 4vh;

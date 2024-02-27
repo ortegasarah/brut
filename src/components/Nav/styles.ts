@@ -8,12 +8,12 @@ export const Navbar = styled.header`
   justify-content: space-between;
   background-color: #fff;
   border-bottom: 2px solid #000;
-  padding: 1em;
+  padding: 1em 1em 1em 0;
   box-sizing: border-box;
 `;
 export const H1 = styled.h1`
   color: #000;
-  margin: 0.5em 1em;
+  margin: 0.5em 0em 0.5em 0.5em;
 
   @media (max-width: 800px) {
     margin-top: 4px;

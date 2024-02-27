@@ -19,6 +19,7 @@ const Controls: React.FC<IProps> = ({ token, tracks, setTrack }) => {
         inLineVlume={false}
         hideAttribution={true}
         play={play}
+        layout={'compact'}
         styles={{
           trackArtistColor: "#fff",
           trackNameColor: "#fff",

@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 
 export const TrackDetails = styled.div`
-min-width: 68vw;
+min-width: 30vw;
 display: flex;
 justify-content: space-between;
 margin: 0;
@@ -31,10 +31,10 @@ export const slide = keyframes`
 `
 
 export const TickerWrapper = styled.div`
-  heigh: 3em;
+  height: 3em;
   margin: 0;
   overflow: hidden;
-  align-text: bottom
+  text-align: bottom;
 
   @media(max-width: 800px) {
     visibility: hidden;
@@ -87,7 +87,7 @@ export const Text = styled.span`
   top: 40%;
   left:40%;
   transform: translate(-50%, -50%);
-  font-size; 18px;
+  font-size: 18px;
   text-transform: uppercase;
   color: black;
 
