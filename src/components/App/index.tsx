@@ -65,6 +65,7 @@ function App() {
     );
     setPlaylists(playlists);
   };
+  
 
   const getTracks = async (id: string) => {
     const { data } = await axios.get(

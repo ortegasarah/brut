@@ -14,7 +14,8 @@ const Nav: React.FC<IProps> = ({ profile }) => {
   return (
     <>
       <Navbar>
-        <H1>Brut</H1>
+        <H1><a href="/">BRUTO</a></H1>
+
         {!profile ? (
           <Button onClick={handleClick}>Login</Button>
         ) : (

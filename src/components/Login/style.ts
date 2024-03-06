@@ -1,5 +1,5 @@
 import styled from 'styled-components'
- import Hero from '../../assets/Art_of_Astroy_Boy_8.png'
+ import Hero from '../../assets/atom-heart.png'
 
 export const Container = styled.div`
   display: flex;

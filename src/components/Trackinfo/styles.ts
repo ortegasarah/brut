@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+import astronboywonderblack from "../../font/astronboy.otf";
 
 export const TrackDetails = styled.div`
 min-width: 30vw;
@@ -9,7 +10,13 @@ background-color: white;
 `
 
 export const H1 = styled.h1`
-  color: black;
+@font-face {
+    font-family: "AstronBoyRg-Regular";
+    src: url(${astronboywonderblack});
+  }
+  font-family: 'AstronBoyRg-Regular';
+
+  color: #000;
   font-weight: bold;
   font-size: 10vh;
   padding-left: 0.5em;

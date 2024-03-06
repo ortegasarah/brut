@@ -1,6 +1,6 @@
 import Select from "react-select";
 import Controls from "../Controls";
-import TrackImage from "../TrackImage";
+import TrackImage from "../Trackimage";
 import { ITrack } from "../../types";
 import { ControlsContrainer } from "./styles";
 interface IProps {
